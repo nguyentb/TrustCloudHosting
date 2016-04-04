@@ -8,16 +8,23 @@ public class Knowledge implements Serializable {
 
 	private String id;
 	private String description;
-	private int level;
+	private int level; //Knowledge trust metric level
+	private int plevel; //physical sub-trust metric level
+	private int clevel; //cyber sub-Trust metric level
+	private int slevel; //social sub-trust metric level
 	private String timestamp;
 	private Object dataCloud;
 	
-	public Knowledge(String id, String description, int level, 
+	public Knowledge(String id, String description, int level, int plevel, int clevel, int slevel, 
 			String timestamp, Object dataCloud) {
 		super();
 		this.id = id;
 		this.description = description;
 		this.level = level;
+		this.plevel = plevel;
+		this.clevel = clevel;
+		this.slevel = slevel;
+
 		this.timestamp =  timestamp;
 		this.dataCloud = dataCloud;
 	}
@@ -32,6 +39,15 @@ public class Knowledge implements Serializable {
 		}
 		public void setLevel(int level){
 			this.level = level;
+		}
+		public void setpLevel(int plevel){
+			this.plevel = plevel;
+		}
+		public void setcLevel(int slevel){
+			this.slevel = slevel;
+		}
+		public void setsLevel(int clevel){
+			this.clevel = clevel;
 		}
 		public void setTimestamp(String timestamp){
 			this.timestamp = timestamp;
@@ -49,6 +65,15 @@ public class Knowledge implements Serializable {
 		}
 		public int getLevel(){
 			return level;
+		}
+		public int getpLevel(){
+			return plevel;
+		}
+		public int getcLevel(){
+			return clevel;
+		}
+		public int getsLevel(){
+			return slevel;
 		}
 		public String getTimestamp(){
 			return timestamp;
