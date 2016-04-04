@@ -8,10 +8,10 @@ public class Knowledge implements Serializable {
 
 	private String id;
 	private String description;
-	private int level; //Knowledge trust metric level
-	private int plevel; //physical sub-trust metric level
-	private int clevel; //cyber sub-Trust metric level
-	private int slevel; //social sub-trust metric level
+	private int level; //Knowledge Trust Metric (TM) level
+	private int plevel; //Physical sub-TM level
+	private int clevel; //Cyber sub-TM level
+	private int slevel; //Social sub-trust metric level
 	private String timestamp;
 	private Object dataCloud;
 	
@@ -108,5 +108,4 @@ public class Knowledge implements Serializable {
 		public String toString() {
 			return "Knowledge[id=" + getId() + "]" + serialVersionUID;
 		}
-		
 }
