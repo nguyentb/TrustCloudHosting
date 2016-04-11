@@ -1,0 +1,540 @@
+@prefix rrk: <http://tii.com/rrk.owl#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+### Trust Ontology Classes
+## Trust, Trustor, Trustee, TrustContext, TrustMetric
+rrk:Trust a owl:Class.
+rrk:Trustor a owl:Class.
+rrk:Trustee a owl:Class.
+rrk:TrustContext a owl:Class.
+
+## Trust Metric is a sub-class of Trust, inherit some trust properties: trustor, trustee, trust context
+## TrustMetric(Trustor, Trustee, TrustContext)
+rrk:TrustMetric rdfs:subClassOf rrk:Trust.
+
+## TrustContext Composition classes: TrustEnvironment, TrustService
+rrk:TrustEnvironment a owl:Class.
+rrk:TrustService a owl:Class.
+
+## TrustMetric Composition classes: Knowledge, Reputation, Recommendation
+rrk:Knowledge a owl:Class.
+rrk:Recommendation a owl:Class.
+rrk:Reputation a owl:Class.
+
+## CloudOfData
+rrk:DataCloud a owl:Class.
+
+## Knowledge Composition classes: Physical, Cyber, Social
+# Physical: QualityofDevice, QualityofTransmission
+rrk:Physical a owl:Class.
+rrk:QualityofDevice a owl:Class.
+rrk:QualityofTransmission a owl:Class.
+
+# Cyber: QualityofService, QualityofInformation
+rrk:Cyber a owl:Class.
+#-QualityofInformation
+rrk:QualityofInformation a owl:Class.
+rrk:InformationAvailability a owl:Class.
+rrk:InformationCertainty a owl:Class.
+rrk:InformationConfidentiality a owl:Class.
+rrk:InformationReliability a owl:Class.
+#-QualityofService
+rrk:QualityofService a owl:Class.
+rrk:ServiceAvailability a owl:Class.
+rrk:ServiceCertainty a owl:Class.
+rrk:ServiceReliability a owl:Class.
+rrk:ServiceScalability a owl:Class.
+rrk:ServiceSecurity a owl:Class.
+rrk:ServiceSupply a owl:Class.
+
+# Social: Honesty, Cooperativeness, CommunityInterest, Similarity
+rrk:Social a owl:Class.
+#rrk:Honesty a owl:Class.
+#rrk:Cooperativeness a owl:Class.
+#rrk:CommunityInterest a owl:Class.
+#rrk:Similarity a owl:Class.
+
+#########################################################################
+
+### Properties: DatatypeProperty, ObjectProperty for Trust Ontology Classes
+
+## for Trust (id, value, trustor, trustee, trustcontext)
+rrk:hasID a owl:DatatypeProperty; 
+	rdfs:domain rrk:Trust; 
+	rdfs:range xsd:string.
+	
+rrk:hasValue a owl:DatatypeProperty; 
+	rdfs:domain rrk:Trust; 
+	rdfs:range xsd:string.
+	
+rrk:hasTrustor a owl:ObjectProperty; 
+          rdfs:domain rrk:Trust; 
+          rdfs:range rrk:Trustor.
+
+rrk:hasTrustee a owl:ObjectProperty; 
+          rdfs:domain rrk:Trust; 
+          rdfs:range rrk:Trustee.
+
+rrk:hasTrustContext a owl:ObjectProperty; 
+          rdfs:domain rrk:Trust; 
+          rdfs:range rrk:TrustContext.
+
+## for TrustContext (id, TrustService, TrustEnvironment)
+rrk:hasID a owl:DatatypeProperty; 
+	rdfs:domain rrk:TrustContext; 
+	rdfs:range xsd:string.
+	
+rrk:hasTrustService a owl:ObjectProperty; 
+	rdfs:domain rrk:TrustContext; 
+	rdfs:range rrk:TrustService.
+
+rrk:hasTrustEnvironment a owl:ObjectProperty; 
+	rdfs:domain rrk:TrustContext; 
+	rdfs:range rrk:TrustEnvironment.
+		  
+## for TrustMetric (Trustor, Trustee, TrustContext, Knowledge, Recommendation, Reputation)
+rrk:hasKnowledge a owl:ObjectProperty; 
+	rdfs:domain rrk:TrustMetric;
+	rdfs:range rrk:Knowledge.
+
+rrk:hasReputation a owl:ObjectProperty; 
+	rdfs:domain rrk:TrustMetric;
+	rdfs:range rrk:Reputation.
+
+rrk:hasRecommendation a owl:ObjectProperty; 
+	rdfs:domain rrk:TrustMetric; 
+	rdfs:range rrk:Recommendation.
+		  
+## for Knowledge(Trustor, Trustee, TrustContext)
+#-DatatypeProperty
+rrk:hasID a owl:DatatypeProperty; 
+          rdfs:domain rrk:Knowledge; 
+          rdfs:range xsd:string.
+
+rrk:hasValue a owl:DatatypeProperty; 
+          rdfs:domain rrk:Knowledge; 
+          rdfs:range xsd:string.
+
+#-ObjectProperty: Composited of Physical, Cyber, Social
+rrk:hasTrustor a owl:ObjectProperty; 
+          rdfs:domain rrk:Knowledge; 
+          rdfs:range rrk:Trustor.
+
+rrk:hasTrustee a owl:ObjectProperty; 
+          rdfs:domain rrk:Knowledge; 
+          rdfs:range rrk:Trustee.
+
+rrk:hasTrustContext a owl:ObjectProperty; 
+          rdfs:domain rrk:Knowledge; 
+          rdfs:range rrk:TrustContext.
+
+rrk:hasPhysical a owl:ObjectProperty; 
+          rdfs:domain rrk:Knowledge; 
+          rdfs:range rrk:Physical.
+
+rrk:hasCyber a owl:ObjectProperty; 
+          rdfs:domain rrk:Knowledge; 
+          rdfs:range rrk:Cyber.
+
+rrk:hasSocial a owl:ObjectProperty; 
+          rdfs:domain rrk:Knowledge; 
+          rdfs:range rrk:Social.
+
+##for Physical: 
+#-DatatypeProperty
+rrk:hasID a owl:DatatypeProperty; 
+	rdfs:domain rrk:Physical;
+	rdfs:range xsd:string.
+
+rrk:hasValue a owl:DatatypeProperty; 
+	rdfs:domain rrk:Physical;
+	rdfs:range xsd:string.
+#-ObjectProperty: Composited of QualityofDevice, QualityofTransmission
+rrk:hasQualityofDevice a owl:ObjectProperty; 
+	rdfs:domain rrk:Physical; 
+	rdfs:range rrk:QualityofDevice.
+
+rrk:hasQualityofTransmission a owl:ObjectProperty; 
+	rdfs:domain rrk:Physical; 
+	rdfs:range rrk:QualityofTransmission.
+
+# for Quality of Device
+rrk:hasID a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofDevice;
+	rdfs:range xsd:string.
+
+rrk:hasValue a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofDevice;
+	rdfs:range xsd:string.
+
+rrk:hasDeviceConsistency a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofDevice;
+	rdfs:range xsd:integer.
+
+rrk:hasDeviceUptime a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofDevice;
+	rdfs:range xsd:integer.
+
+rrk:hasDeviceQuality a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofDevice;
+	rdfs:range xsd:integer.
+
+rrk:hasDeviceSoftwareRobustness a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofDevice;
+	rdfs:range xsd:integer.
+
+rrk:hasDeviceHardwareRobustness a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofDevice;
+	rdfs:range xsd:integer.
+
+# for Quality of Transmission
+rrk:hasID a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofTransmission;
+	rdfs:range xsd:string.
+
+rrk:hasValue a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofTransmission;
+	rdfs:range xsd:string.
+
+rrk:hasBitErrorRate a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofTransmission;
+	rdfs:range xsd:integer.
+
+rrk:hasLinkEfficiency a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofTransmission;
+	rdfs:range xsd:integer.
+
+rrk:hasTransmissionConsistency a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofTransmission;
+	rdfs:range xsd:integer.
+
+## for Cyber
+#-DatatypeProperty
+rrk:hasID a owl:DatatypeProperty; 
+	rdfs:domain rrk:Cyber;
+	rdfs:range xsd:string.
+
+rrk:hasValue a owl:DatatypeProperty; 
+	rdfs:domain rrk:Cyber;
+	rdfs:range xsd:integer.
+
+#-ObjectProperty: Composited of QualityofInformation, QualityofService
+rrk:hasQualityofInformation a owl:ObjectProperty; 
+	rdfs:domain rrk:Cyber; 
+	rdfs:range rrk:QualityofInformation.
+
+rrk:hasQualityofService a owl:ObjectProperty; 
+	rdfs:domain rrk:Cyber; 
+	rdfs:range rrk:QualityofService.
+	
+# for Quality of Information: Composited of InformationAvailability, InformationCertainty, InformationConfidentiality, InformationReliability
+rrk:hasID a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofInformation;
+	rdfs:range xsd:string.
+	
+rrk:hasValue a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofInformation;
+	rdfs:range xsd:string.
+	
+rrk:hasInformationAvailability a owl:ObjectProperty;
+	rdfs:domain rrk:QualityofInformation;
+	rdfs:range rrk:InformationAvailability.
+	
+rrk:hasInformationCertainty a owl:ObjectProperty;
+	rdfs:domain rrk:QualityofInformation;
+	rdfs:range rrk:InformationCertainty.
+
+rrk:hasInformationConfidentiality a owl:ObjectProperty;
+	rdfs:domain rrk:QualityofInformation;
+	rdfs:range rrk:InformationConfidentiality.
+
+rrk:hasInformationReliability a owl:ObjectProperty;
+	rdfs:domain rrk:QualityofInformation;
+	rdfs:range rrk:InformationReliability.
+	
+# for Information Availability
+rrk:hasID a owl:DatatypeProperty;
+	rdfs:domain rrk:InformationAvailability;
+	rdfs:range xsd:string.
+
+rrk:hasValue a owl:DatatypeProperty;
+	rdfs:domain rrk:InformationAvailability;
+	rdfs:range xsd:string.
+
+rrk:hasExpressiveness a owl:DatatypeProperty;
+	rdfs:domain rrk:InformationAvailability;
+	rdfs:range xsd:integer.
+
+rrk:hasInformationSufficience a owl:DatatypeProperty;
+	rdfs:domain rrk:InformationAvailability;
+	rdfs:range xsd:integer.
+
+# for InformationCertainty
+rrk:hasID a owl:DatatypeProperty;
+	rdfs:domain rrk:InformationCertainty;
+	rdfs:range xsd:string.
+
+rrk:hasValue a owl:DatatypeProperty;
+	rdfs:domain rrk:InformationCertainty;
+	rdfs:range xsd:string.
+
+rrk:InformationConsistency a owl:DatatypeProperty;
+	rdfs:domain rrk:InformationCertainty;
+	rdfs:range xsd:integer.
+
+#for InformationConfidentiality
+rrk:hasID a owl:DatatypeProperty;
+	rdfs:domain rrk:InformationConfidentiality;
+	rdfs:range xsd:string.
+
+rrk:hasValue a owl:DatatypeProperty;
+	rdfs:domain rrk:InformationConfidentiality;
+	rdfs:range xsd:string.
+
+rrk:hasPrivacy a owl:DatatypeProperty;
+	rdfs:domain rrk:InformationConfidentiality;
+	rdfs:range xsd:integer.
+
+rrk:hasAccessibilityRight a owl:DatatypeProperty;
+	rdfs:domain rrk:InformationConfidentiality;
+	rdfs:range xsd:integer.
+
+#for InformationReliability
+rrk:hasID a owl:DatatypeProperty;
+	rdfs:domain rrk:InformationReliability;
+	rdfs:range xsd:string.
+
+rrk:hasValue a owl:DatatypeProperty;
+	rdfs:domain rrk:InformationReliability;
+	rdfs:range xsd:string.
+
+rrk:hasRelevance a owl:DatatypeProperty;
+	rdfs:domain rrk:InformationReliability;
+	rdfs:range xsd:integer.
+
+rrk:hasSourceCredibility a owl:DatatypeProperty;
+	rdfs:domain rrk:InformationReliability;
+	rdfs:range xsd:integer.
+	
+rrk:hasTimelineness a owl:DatatypeProperty;
+	rdfs:domain rrk:InformationReliability;
+	rdfs:range xsd:integer.
+
+rrk:hasVeracity a owl:DatatypeProperty;
+	rdfs:domain rrk:InformationReliability;
+	rdfs:range xsd:integer.		  
+
+# for Quality of Service: Composited of ServiceAvailability, ServiceCertainty, ServiceReliability, ServiceScalability, ServiceSecurity, ServiceSupply
+rrk:hasID a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofService;
+	rdfs:range xsd:string.
+	
+rrk:hasValue a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofService;
+	rdfs:range xsd:string.
+
+rrk:hasServiceSupply a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofService;
+	rdfs:range xsd:integer.
+	
+rrk:hasServiceScalability a owl:DatatypeProperty;
+	rdfs:domain rrk:QualityofService;
+	rdfs:range xsd:integer.
+
+rrk:hasServiceAvailability a owl:ObjectProperty;
+	rdfs:domain rrk:QualityofService;
+	rdfs:range rrk:ServiceAvailability.
+	
+rrk:hasServiceCertainty a owl:ObjectProperty;
+	rdfs:domain rrk:QualityofService;
+	rdfs:range rrk:ServiceCertainty.
+
+rrk:hasServiceReliability a owl:ObjectProperty;
+	rdfs:domain rrk:QualityofService;
+	rdfs:range rrk:ServiceReliability.
+
+rrk:hasServiceSecurity a owl:ObjectProperty;
+	rdfs:domain rrk:QualityofService;
+	rdfs:range rrk:ServiceSecurity.
+
+# for ServiceAvailability
+rrk:hasID a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceAvailability;
+	rdfs:range xsd:string.
+	
+rrk:hasValue a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceAvailability;
+	rdfs:range xsd:string.
+
+rrk:hasBandwidth a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceAvailability;
+	rdfs:range xsd:integer.
+	
+rrk:hasDownlinkRate a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceAvailability;
+	rdfs:range xsd:integer.
+
+rrk:hasUplinkRate a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceAvailability;
+	rdfs:range xsd:integer.
+	
+rrk:hasIntrusionResilience a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceAvailability;
+	rdfs:range xsd:integer.
+	
+rrk:hasServiceUptime a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceAvailability;
+	rdfs:range xsd:integer.
+
+# for ServiceCertainty
+rrk:hasID a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceCertainty;
+	rdfs:range xsd:string.
+	
+rrk:hasValue a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceCertainty;
+	rdfs:range xsd:string.
+	
+rrk:hasServiceConsistency a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceCertainty;
+	rdfs:range xsd:integer.
+
+# for ServiceReliability
+rrk:hasID a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceReliability;
+	rdfs:range xsd:string.
+	
+rrk:hasValue a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceReliability;
+	rdfs:range xsd:string.
+	
+rrk:hasCongestionControl a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceReliability;
+	rdfs:range xsd:integer.
+
+rrk:hasDelay a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceReliability;
+	rdfs:range xsd:integer.
+	
+rrk:hasJitter a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceReliability;
+	rdfs:range xsd:integer.
+	
+rrk:hasPowerSupply a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceReliability;
+	rdfs:range xsd:integer.
+	
+rrk:hasLoadBalanceScheme a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceReliability;
+	rdfs:range xsd:integer.
+	
+rrk:hasReplicationScheme a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceReliability;
+	rdfs:range xsd:integer.
+	
+# for ServiceSecurity
+rrk:hasID a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceSecurity;
+	rdfs:range xsd:string.
+	
+rrk:hasValue a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceSecurity;
+	rdfs:range xsd:string.
+	
+rrk:hasAuthenticationMethod a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceSecurity;
+	rdfs:range xsd:integer.
+
+rrk:hasBackupMethod a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceSecurity;
+	rdfs:range xsd:integer.
+	
+rrk:hasEncryptionMethod a owl:DatatypeProperty;
+	rdfs:domain rrk:ServiceSecurity;
+	rdfs:range xsd:integer.
+	
+
+## for Social
+rrk:hasID a owl:DatatypeProperty; 
+	rdfs:domain rrk:Social;
+	rdfs:range xsd:string.
+
+rrk:hasValue a owl:DatatypeProperty; 
+	rdfs:domain rrk:Social;
+	rdfs:range xsd:string.
+
+rrk:hasHonesty a owl:DatatypeProperty; 
+	rdfs:domain rrk:Social;
+	rdfs:range xsd:integer.
+
+rrk:hasCommunityInterest a owl:DatatypeProperty; 
+	rdfs:domain rrk:Social;
+	rdfs:range xsd:integer.
+
+rrk:hasCooperativeness a owl:DatatypeProperty; 
+	rdfs:domain rrk:Social;
+	rdfs:range xsd:integer.
+
+rrk:hasSimilarity a owl:DatatypeProperty; 
+	rdfs:domain rrk:Social;
+	rdfs:range xsd:integer.
+
+## for Recommendation
+#-DatatypeProperty
+rrk:hasID a owl:DatatypeProperty; 
+          rdfs:domain rrk:Recommendation; 
+          rdfs:range xsd:string.
+
+rrk:hasValue a owl:DatatypeProperty; 
+          rdfs:domain rrk:Recommendation; 
+          rdfs:range xsd:integer.
+		  
+rrk:hasCalculatedValue a owl:DatatypeProperty; 
+          rdfs:domain rrk:Recommendation; 
+          rdfs:range xsd:float.
+
+#-ObjectProperty: Composited of Physical, Cyber, Social
+rrk:hasTrustor a owl:ObjectProperty; 
+          rdfs:domain rrk:Recommendation; 
+          rdfs:range rrk:Trustor.
+
+rrk:hasTrustee a owl:ObjectProperty; 
+          rdfs:domain rrk:Recommendation; 
+          rdfs:range rrk:Trustee.
+
+rrk:hasTrustContext a owl:ObjectProperty; 
+          rdfs:domain rrk:Recommendation; 
+          rdfs:range rrk:TrustContext.
+
+## for Reputation
+#-DatatypeProperty
+rrk:hasID a owl:DatatypeProperty; 
+          rdfs:domain rrk:Reputation; 
+          rdfs:range xsd:string.
+
+rrk:hasValue a owl:DatatypeProperty; 
+          rdfs:domain rrk:Reputation; 
+          rdfs:range xsd:integer.#
+		  
+rrk:hasCalculatedValue a owl:DatatypeProperty; 
+          rdfs:domain rrk:Reputation; 
+          rdfs:range xsd:float.
+
+#-ObjectProperty: Composited of Physical, Cyber, Social
+rrk:hasTrustor a owl:ObjectProperty; 
+          rdfs:domain rrk:Reputation; 
+          rdfs:range rrk:Trustor.
+
+rrk:hasTrustee a owl:ObjectProperty; 
+          rdfs:domain rrk:Reputation; 
+          rdfs:range rrk:Trustee.
+
+rrk:hasTrustContext a owl:ObjectProperty; 
+          rdfs:domain rrk:Reputation; 
+          rdfs:range rrk:TrustContext.
+
+## for CloudOfData
