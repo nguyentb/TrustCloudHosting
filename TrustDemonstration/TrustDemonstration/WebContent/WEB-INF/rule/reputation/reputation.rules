@@ -1,0 +1,32 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rrk: <https://raw.githubusercontent.com/nguyentb/TrustCloudHosting/master/TrustComputation/WebContent/WEB-INF/rdf/rrk.owl#>.
+
+[
+reputationrule1:
+(rrk:reputation_001 rrk:hasCalculatedValue ?cvalue), ge(?cvalue, 0.8),
+(rrk:reputation_001 rrk:hasValue ?value), notEqual(?value, "high"),
+-> 
+drop(2),
+(rrk:reputation_001 rrk:hasValue "high"^^xsd:string)
+]
+
+[
+reputationrule2:
+(rrk:reputation_001 rrk:hasCalculatedValue ?cvalue), greaterThan(?cvalue, 0.5), lessThan(?cvalue, 0.8),
+(rrk:reputation_001 rrk:hasValue ?value), notEqual(?value, "medium"),
+-> 
+drop(3),
+(rrk:reputation_001 rrk:hasValue "medium"^^xsd:string)
+]
+
+[
+reputationrule3:
+(rrk:reputation_001 rrk:hasCalculatedValue ?cvalue), le(?cvalue, 0.5),
+(rrk:reputation_001 rrk:hasValue ?value), notEqual(?value, "low"),
+-> 
+drop(2),
+(rrk:reputation_001 rrk:hasValue "low"^^xsd:string)
+]

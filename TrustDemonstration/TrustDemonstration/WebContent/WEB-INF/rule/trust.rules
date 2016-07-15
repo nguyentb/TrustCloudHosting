@@ -1,0 +1,418 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix owl:	<http://www.w3.org/2002/07/owl#>.
+@prefix rrk: <https://raw.githubusercontent.com/nguyentb/TrustCloudHosting/master/TrustComputation/WebContent/WEB-INF/rdf/rrk.owl#>.
+
+[
+trustrule1:
+(rrk:knowledge_001 rrk:hasValue "high"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "high"^^xsd:string), (rrk:reputation_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "high")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "high"^^xsd:string)
+]
+[
+trustrule2:
+(rrk:knowledge_001 rrk:hasValue "high"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "high"^^xsd:string), (rrk:reputation_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "high")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "high"^^xsd:string)]
+[
+trustrule3:
+(rrk:knowledge_001 rrk:hasValue "high"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "high"^^xsd:string), (rrk:reputation_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "medium")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "medium"^^xsd:string)]
+[
+trustrule4:
+(rrk:knowledge_001 rrk:hasValue "high"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "medium"^^xsd:string), (rrk:reputation_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "medium")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "medium"^^xsd:string)]
+[
+trustrule5:
+(rrk:knowledge_001 rrk:hasValue "high"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "medium"^^xsd:string), (rrk:reputation_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "medium")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "medium"^^xsd:string)]
+trustrule6:
+(rrk:knowledge_001 rrk:hasValue "high"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "medium"^^xsd:string), (rrk:reputation_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "low")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "low"^^xsd:string)]
+[
+trustrule7:
+(rrk:knowledge_001 rrk:hasValue "high"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "low"^^xsd:string), (rrk:reputation_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "medium")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "medium"^^xsd:string)]
+[
+trustrule8:
+(rrk:knowledge_001 rrk:hasValue "high"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "low"^^xsd:string), (rrk:reputation_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "medium")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "medium"^^xsd:string)]
+[
+trustrule9:
+(rrk:knowledge_001 rrk:hasValue "high"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "low"^^xsd:string), (rrk:reputation_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "low")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "low"^^xsd:string)]
+
+[
+trustrule10:
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "high"^^xsd:string), (rrk:reputation_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "high")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "high"^^xsd:string)]
+[
+trustrule11:
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "high"^^xsd:string), (rrk:reputation_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "medium")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "medium"^^xsd:string)]
+[
+trustrule12:
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "high"^^xsd:string), (rrk:reputation_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "medium")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "medium"^^xsd:string)]
+[
+trustrule13:
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "medium"^^xsd:string), (rrk:reputation_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "medium")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "medium"^^xsd:string)]
+[
+trustrule14:
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "medium"^^xsd:string), (rrk:reputation_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "medium")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "medium"^^xsd:string)]
+trustrule15:
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "medium"^^xsd:string), (rrk:reputation_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "low")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "low"^^xsd:string)]
+[
+trustrule16:
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "low"^^xsd:string), (rrk:reputation_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "low")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "low"^^xsd:string)]
+[
+trustrule17:
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "low"^^xsd:string), (rrk:reputation_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "low")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "low"^^xsd:string)]
+[
+trustrule18:
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "low"^^xsd:string), (rrk:reputation_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "low")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "low"^^xsd:string)]
+
+[
+trustrule19:
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "high"^^xsd:string), (rrk:reputation_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "medium")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "medium"^^xsd:string)]
+[
+trustrule20:
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "high"^^xsd:string), (rrk:reputation_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "low")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "low"^^xsd:string)]
+[
+trustrule21:
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "high"^^xsd:string), (rrk:reputation_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "low")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "low"^^xsd:string)]
+[
+trustrule22:
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "medium"^^xsd:string), (rrk:reputation_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "low")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "low"^^xsd:string)]
+[
+trustrule23:
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "medium"^^xsd:string), (rrk:reputation_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "low")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "low"^^xsd:string)]
+trustrule24:
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "medium"^^xsd:string), (rrk:reputation_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "low")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "low"^^xsd:string)]
+[
+trustrule25:
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "low"^^xsd:string), (rrk:reputation_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "low")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "low"^^xsd:string)]
+[
+trustrule26:
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "low"^^xsd:string), (rrk:reputation_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "low")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "low"^^xsd:string)]
+[
+trustrule27:
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string), (rrk:recommendation_001 rrk:hasValue "low"^^xsd:string), (rrk:reputation_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:trust_001 rrk:hasValue ?value), notEqual(?value, "low")
+-> drop(3),
+(rrk:trust_001 rrk:hasValue "low"^^xsd:string)]
+
+
+
+[
+reputationrule1:
+(rrk:reputation_001 rrk:hasCalculatedValue ?cvalue), ge(?cvalue, 0.8),
+(rrk:reputation_001 rrk:hasValue ?value), notEqual(?value, "high"),
+-> 
+drop(2),
+(rrk:reputation_001 rrk:hasValue "high"^^xsd:string)
+]
+
+[
+reputationrule2:
+(rrk:reputation_001 rrk:hasCalculatedValue ?cvalue), greaterThan(?cvalue, 0.5), lessThan(?cvalue, 0.8),
+(rrk:reputation_001 rrk:hasValue ?value), notEqual(?value, "medium"),
+-> 
+drop(3),
+(rrk:reputation_001 rrk:hasValue "medium"^^xsd:string)
+]
+
+[
+reputationrule3:
+(rrk:reputation_001 rrk:hasCalculatedValue ?cvalue), le(?cvalue, 0.5),
+(rrk:reputation_001 rrk:hasValue ?value), notEqual(?value, "low"),
+-> 
+drop(2),
+(rrk:reputation_001 rrk:hasValue "low"^^xsd:string)
+]
+
+[
+recommendationrule1:
+(rrk:recommendation_001 rrk:hasCalculatedValue ?cvalue), ge(?cvalue, 0.7),
+(rrk:recommendation_001 rrk:hasValue ?value), notEqual(?value, "high")
+->
+drop(2), 
+(rrk:recommendation_001 rrk:hasValue "high"^^xsd:string)
+]
+
+[
+recommendationrule2:
+(rrk:recommendation_001 rrk:hasCalculatedValue ?cvalue), greaterThan(?cvalue, 0.4), lessThan(?cvalue, 0.7),
+(rrk:recommendation_001 rrk:hasValue ?value), notEqual(?value, "medium")
+-> 
+drop(3),
+(rrk:recommendation_001 rrk:hasValue "medium"^^xsd:string)
+]
+
+[
+recommendationrule3:
+(rrk:recommendation_001 rrk:hasCalculatedValue ?cvalue), le(?cvalue, 0.4),
+(rrk:recommendation_001 rrk:hasValue ?value), notEqual(?value, "low")
+-> 
+drop(2),
+(rrk:recommendation_001 rrk:hasValue "low"^^xsd:string)
+]
+
+[
+knowledgerule1:
+(rrk:physical_001 rrk:hasValue "high"^^xsd:string), (rrk:cyber_001 rrk:hasValue "high"^^xsd:string), (rrk:social_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "high")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "high"^^xsd:string)
+]
+[
+knowledgerule2:
+(rrk:physical_001 rrk:hasValue "high"^^xsd:string), (rrk:cyber_001 rrk:hasValue "high"^^xsd:string), (rrk:social_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "high")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "high"^^xsd:string)
+]
+[
+knowledgerule3:
+(rrk:physical_001 rrk:hasValue "high"^^xsd:string), (rrk:cyber_001 rrk:hasValue "high"^^xsd:string), (rrk:social_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "medium")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string)]
+[
+knowledgerule4:
+(rrk:physical_001 rrk:hasValue "high"^^xsd:string), (rrk:cyber_001 rrk:hasValue "medium"^^xsd:string), (rrk:social_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "high")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "high"^^xsd:string)]
+[
+knowledgerule5:
+(rrk:physical_001 rrk:hasValue "high"^^xsd:string), (rrk:cyber_001 rrk:hasValue "medium"^^xsd:string), (rrk:social_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "medium")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string)]
+[
+knowledgerule6:
+(rrk:physical_001 rrk:hasValue "high"^^xsd:string), (rrk:cyber_001 rrk:hasValue "medium"^^xsd:string), (rrk:social_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "low")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string)]
+[
+knowledgerule7:
+(rrk:physical_001 rrk:hasValue "high"^^xsd:string), (rrk:cyber_001 rrk:hasValue "low"^^xsd:string), (rrk:social_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "medium")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string)]
+[
+knowledgerule8:
+(rrk:physical_001 rrk:hasValue "high"^^xsd:string), (rrk:cyber_001 rrk:hasValue "low"^^xsd:string), (rrk:social_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "medium")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string)]
+[
+knowledgerule9:
+(rrk:physical_001 rrk:hasValue "high"^^xsd:string), (rrk:cyber_001 rrk:hasValue "low"^^xsd:string), (rrk:social_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "low")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string)]
+
+[
+knowledgerule10:
+(rrk:physical_001 rrk:hasValue "medium"^^xsd:string), (rrk:cyber_001 rrk:hasValue "high"^^xsd:string), (rrk:social_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "high")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "high"^^xsd:string)]
+[
+knowledgerule11:
+(rrk:physical_001 rrk:hasValue "medium"^^xsd:string), (rrk:cyber_001 rrk:hasValue "high"^^xsd:string), (rrk:social_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "medium")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string)]
+[
+knowledgerule12:
+(rrk:physical_001 rrk:hasValue "medium"^^xsd:string), (rrk:cyber_001 rrk:hasValue "high"^^xsd:string), (rrk:social_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "low")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string)]
+[
+knowledgerule13:
+(rrk:physical_001 rrk:hasValue "medium"^^xsd:string), (rrk:cyber_001 rrk:hasValue "medium"^^xsd:string), (rrk:social_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "medium")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string)]
+[
+knowledgerule14:
+(rrk:physical_001 rrk:hasValue "medium"^^xsd:string), (rrk:cyber_001 rrk:hasValue "medium"^^xsd:string), (rrk:social_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "medium")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string)]
+[
+knowledgerule15:
+(rrk:physical_001 rrk:hasValue "medium"^^xsd:string), (rrk:cyber_001 rrk:hasValue "medium"^^xsd:string), (rrk:social_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "medium")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string)]
+[
+knowledgerule16:
+(rrk:physical_001 rrk:hasValue "medium"^^xsd:string), (rrk:cyber_001 rrk:hasValue "low"^^xsd:string), (rrk:social_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "low")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string)]
+[
+knowledgerule17:
+(rrk:physical_001 rrk:hasValue "medium"^^xsd:string), (rrk:cyber_001 rrk:hasValue "low"^^xsd:string), (rrk:social_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "low")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string)]
+[
+knowledgerule18:
+(rrk:physical_001 rrk:hasValue "medium"^^xsd:string), (rrk:cyber_001 rrk:hasValue "low"^^xsd:string), (rrk:social_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "low")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string)]
+
+[
+knowledgerule19:
+(rrk:physical_001 rrk:hasValue "low"^^xsd:string), (rrk:cyber_001 rrk:hasValue "high"^^xsd:string), (rrk:social_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "medium")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string)]
+[
+knowledgerule20:
+(rrk:physical_001 rrk:hasValue "low"^^xsd:string), (rrk:cyber_001 rrk:hasValue "high"^^xsd:string), (rrk:social_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "medium")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string)]
+[
+knowledgerule21:
+(rrk:physical_001 rrk:hasValue "low"^^xsd:string), (rrk:cyber_001 rrk:hasValue "high"^^xsd:string), (rrk:social_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "low")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string)]
+[
+knowledgerule22:
+(rrk:physical_001 rrk:hasValue "low"^^xsd:string), (rrk:cyber_001 rrk:hasValue "medium"^^xsd:string), (rrk:social_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "medium")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string)]
+[
+knowledgerule23:
+(rrk:physical_001 rrk:hasValue "low"^^xsd:string), (rrk:cyber_001 rrk:hasValue "medium"^^xsd:string), (rrk:social_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "medium")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "medium"^^xsd:string)]
+[
+knowledgerule24:
+(rrk:physical_001 rrk:hasValue "low"^^xsd:string), (rrk:cyber_001 rrk:hasValue "medium"^^xsd:string), (rrk:social_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "low")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string)]
+[
+knowledgerule25:
+(rrk:physical_001 rrk:hasValue "low"^^xsd:string), (rrk:cyber_001 rrk:hasValue "low"^^xsd:string), (rrk:social_001 rrk:hasValue "high"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "low")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string)]
+[
+knowledgerule26:
+(rrk:physical_001 rrk:hasValue "low"^^xsd:string), (rrk:cyber_001 rrk:hasValue "low"^^xsd:string), (rrk:social_001 rrk:hasValue "medium"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "low")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string)]
+[
+knowledgerule27:
+(rrk:physical_001 rrk:hasValue "low"^^xsd:string), (rrk:cyber_001 rrk:hasValue "low"^^xsd:string), (rrk:social_001 rrk:hasValue "low"^^xsd:string)
+, (rrk:knowledge_001 rrk:hasValue ?value), notEqual(?value, "low")
+
+-> drop(3),
+(rrk:knowledge_001 rrk:hasValue "low"^^xsd:string)]

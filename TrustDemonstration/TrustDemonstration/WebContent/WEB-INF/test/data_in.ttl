@@ -1,0 +1,39 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rrk:     <https://raw.githubusercontent.com/nguyentb/TrustCloudHosting/master/TrustComputation/WebContent/WEB-INF/rdf/rrk.owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:     <http://www.w3.org/XML/1998/namespace> .
+
+rrk:hasID
+      a       owl:DatatypeProperty ;
+      rdfs:domain rrk:Recommendation , rrk:Reputation ;
+      rdfs:range xsd:string .
+
+rrk:hasValue
+      a       owl:DatatypeProperty ;
+      rdfs:domain rrk:Recommendation , rrk:Reputation ;
+      rdfs:range xsd:integer .
+
+rrk:Recommendation
+      a       owl:Class .
+
+rrk:hasCalculatedValue
+      a       owl:DatatypeProperty ;
+      rdfs:domain rrk:Recommendation , rrk:Reputation ;
+      rdfs:range xsd:float .
+
+rrk:Reputation
+      a       owl:Class .
+
+rrk:reputation_001
+      a       owl:NamedIndividual , rrk:Reputation ;
+      rrk:hasCalculatedValue
+              0.15 ;
+      rrk:hasValue "unknown"^^xsd:string .
+
+rrk:recommendation_001
+      a       rrk:Recommendation , owl:NamedIndividual ;
+      rrk:hasCalculatedValue
+              0.45 ;
+      rrk:hasValue "unknown"^^xsd:string .
